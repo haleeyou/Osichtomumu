@@ -13,7 +13,7 @@ body {
 
 .hero {
     background: url('../images/hero.jpg') no-repeat center center/cover;
-    height: 30vh;
+    height: 25vh;
     color: var(--deep-blue);
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@ body {
 .hero-overlay {
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    padding: 50px 20px;
+    padding: 25px 20px;
     
 }
 
@@ -101,4 +101,43 @@ footer {
 .navbar .dropdown-menu .dropdown-item:hover {
   background-color: #f5f5f5; /* light grey on hover */
   color: #d4a017; /* cream/golden highlight */
+}
+
+.btn-primary {
+  background-color: #003366 !important; /* footer dark blue */
+  border-color: #003366 !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #000c1a !important; /* slightly darker on hover */
+  border-color: #000c1a !important;
+}
+
+/* style.css */
+
+.navbar-nav .nav-link {
+  color: white; /* default links */
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ddd; /* lighter on hover */
+}
+
+.navbar-nav .nav-link.active {
+  color: #000 !important; /* black when active */
+  background-color: #fff; /* optional: white background */
+  border-radius: 5px; /* optional: makes it stand out */
+}
+
+/* Accordion on hover */
+.accordion-button:hover {
+  background-color: #e6e6e6;
+}
+
+/* Accordion when active/open */
+.accordion-button:not(.collapsed) {
+  background-color: #003366 !important; /* dark blue */
+  color: #fff !important; /* white text */
 }
