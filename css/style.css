@@ -97,9 +97,20 @@ footer {
 body {
     font-family: Arial, sans-serif;
 }
+
+
+/* Navbar */
 .navbar {
-    background-color: #002147);
-    padding: 10px 0;
+  background-color: #003366 !important;
+}
+
+.navbar .nav-link {
+  color: white !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffc107 !important; /* golden highlight */
 }
 
 
