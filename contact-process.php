@@ -1,8 +1,8 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fullname = $_POST['fullname'];
-    $email = $_POST['email'];
-    $program = $_POST['program'];
+    $fullname = htmlspecialchars($_POST['fullname']);
+    $email = htmlspecialchars($_POST['email']);
+    $program = htmlspecialchars($_POST['program']);
 
     // File upload directory
     $uploadDir = "uploads/";
@@ -20,15 +20,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             return "File upload error.";
         }
 
-        // Check file size
         if ($file['size'] > $maxFileSize) {
             return "File is too large. Max 2MB allowed.";
         }
 
-        // Get file extension
         $fileExt = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-
-        // Validate extension
         if (!in_array($fileExt, $allowedTypes)) {
             return "Invalid file type. Allowed types: " . implode(", ", $allowedTypes);
         }
@@ -69,12 +65,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($_FILES["othercert"]["tmp_name"], $othercertPath);
     }
 
-    // Notify admin (optional)
-    $to = "admissions@yourdomain.com";
+    // Notify admin via email
+    $to = "admissions@osichtomumu.edu.ng"; // update with your real cPanel email
     $subject = "New Admission Application - $fullname";
-    $message = "New applicant submitted:\n\nName: $fullname\nEmail: $email\nProgram: $program\n\nUploaded Files:\nPassport: $passportPath\nO'Level: $olevelPath\nOther: $othercertPath";
-    @mail($to, $subject, $message);
+    $message = "New applicant submitted:\n\n";
+    $message .= "Name: $fullname\nEmail: $email\nProgram: $program\n\n";
+    $message .= "Uploaded Files:\nPassport: $passportPath\nO'Level: $olevelPath\nOther: $othercertPath";
 
-    echo "✅ Application submitted successfully!";
+    // Proper headers
+    $headers = "From: $fullname <$email>\r\n";
+    $headers .= "Reply-To: $email\r\n";
+
+    if (mail($to, $subject, $message, $headers)) {
+        echo "✅ Application submitted successfully!";
+    } else {
+        echo "❌ Error: Unable to send email. Please try again later.";
+    }
 }
 ?>
