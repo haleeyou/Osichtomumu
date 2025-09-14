@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Notify admin for admission
-        $to = "admissions@yourdomain.com";
+        $to = "admissions@osichtomumu.edu.ng";
         $subject = "New Admission Application - $fullname";
         $message = "New applicant submitted:\n\nName: $fullname\nEmail: $email\nProgram: $program\n\nFiles:\nPassport: $passportPath\nO'Level: $olevelPath\nOther: $othercertPath";
         @mail($to, $subject, $message);
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = $_POST['message'];
 
         // Notify admin for contact
-        $to = "info@yourdomain.com";
+        $to = "info@osichtomumu.edu.ng";
         $mailSubject = "Contact Form Submission - $subject";
         $mailBody = "You have a new message from:\n\nName: $fullname\nEmail: $email\n\nMessage:\n$message";
         @mail($to, $mailSubject, $mailBody);
