@@ -42,7 +42,7 @@ body {
 /* Hero section */
 .hero {
   position: relative;
-  height: 80vh;
+  height: 25vh;
   background: url('../images/logo.png') no-repeat center center;
   background-size: contain;
   display: flex;
